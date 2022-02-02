@@ -21,7 +21,7 @@
   align-items: center;
   padding: 1em 2em;
   box-shadow: #222 0 0 5px;
-  z-index: 100;
+  z-index: 1;
 }
 
 .chat__header p {
@@ -65,7 +65,7 @@
 }
 
 .chat__mesagges{
-  height: 80vh;
+  height: 85vh;
   padding: 0.5em 1em;
 
   background-color: #444;
@@ -138,4 +138,51 @@
 .chat__sendButton:hover{
   transform: scale(1.1);
   cursor: pointer;
+}
+
+@media (max-width: 768px){
+  .channelInfoContainer{
+    width: 50%;
+  }
+
+  .chat{
+    width: 65vw;
+    position: fixed;
+  }
+
+  .chat__header{
+    width: 65vw;
+  }
+
+  .chat__mesagges{
+    width: 65vw;
+  }
+
+  .chat__input{
+    width: 65vw;
+  }
+}
+
+@media (max-width: 425px) {
+ .chat{
+   width: 100vw;
+   z-index: 1;
+ }
+
+ .chat__header{
+  width: inherit;
+ }
+
+ .chat__mesagges{
+   height: 85vh;
+   width: inherit;
+ }
+
+ .chat__input{
+   width: 100vw;
+ }
+
+ .headerInnerContainer{
+   padding-left: 3em;
+ }
 }

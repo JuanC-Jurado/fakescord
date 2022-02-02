@@ -45,6 +45,8 @@ function Chat({ usuario, canalActivo, setCanalActivo }) {
   async function enviarMensaje(e) {
     e.preventDefault();
 
+    if(e.target.elements.contenidoMensaje.value === '') return
+
     const nuevoMensaje = {
       id: +new Date(),
       usuario: usuario.displayName,
@@ -68,7 +70,7 @@ function Chat({ usuario, canalActivo, setCanalActivo }) {
     <div className={styles.chat}>
       <div className={styles.chat__header}>
         {/* Nombre del Canal */}
-        <div>
+        <div className={styles.headerInnerContainer}>
           <h2 className={styles.chat__headerName}>
             <span className={styles.channelHash}>#</span>
             {canalActivo ? canalActivo.nombre : null}

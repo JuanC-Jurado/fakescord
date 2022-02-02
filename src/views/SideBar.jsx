@@ -15,6 +15,7 @@ function SideBar({ usuario, setCanalActivo, canalActivo }) {
   const [listaCanales, setListaCanales] = useState(null);
   const [mostrarModalUnirse, setMostrarModalUnirse] = useState(false);
   const [mostrarModalCrear, setMostrarModalCrear] = useState(false);
+  const [mostrar, setMostrar] = useState(false);
 
   useEffect(() => {
     obtenerListaCanales(usuario.uid);
@@ -27,9 +28,22 @@ function SideBar({ usuario, setCanalActivo, canalActivo }) {
   }
 
   return (
-    <div className={styles.sidebar}>
+    <div className={styles.sidebar} style={mostrar ? {
+      left: 0,
+      transition: 'linear 300ms'
+      } : {
+        transition: 'linear 300ms'
+      }}>
       <div className={styles.sidebar__header}>
         <h1 className={styles.sidebar__headerTitle}>Fakescord</h1>
+        <div onClick={() => setMostrar(!mostrar)} className={styles.mobileButton}>
+          <i className="fas fa-chevron-circle-down" style={mostrar ? {
+            transform: 'rotate(-270deg)'
+      } : {
+        transition: 'linear 300ms',
+        transform: 'rotate(270deg)'
+      }}></i>
+        </div>
       </div>
 
       <div className={styles.sidebar__channels}>
@@ -47,10 +61,11 @@ function SideBar({ usuario, setCanalActivo, canalActivo }) {
           ? listaCanales.map((canal) => {
               return (
                 <Canal
+                  setMostrar={setMostrar}
                   setCanalActivo={setCanalActivo}
                   key={canal.id}
                   canalData={canal}
-                />
+                ></Canal>
               );
             })
           : null}

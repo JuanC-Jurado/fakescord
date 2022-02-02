@@ -10,10 +10,9 @@
   background-color: #00000077;
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   display: flex;
   justify-content: center;
-  z-index: 1000
 }
 
 .modalCard{
@@ -24,6 +23,7 @@
 
   border-radius: 10px;
   background-color: #555;
+  
 }
 
 .modalCard p {
@@ -84,4 +84,13 @@
 .no:hover{
   cursor: pointer;
   box-shadow: #222 0 0 5px 1px;
+}
+
+@media (max-width: 425px){
+  .overlay{
+    width: 100vw;
+
+    padding-right: 1em;
+    padding-left: 1em;
+  }
 }
