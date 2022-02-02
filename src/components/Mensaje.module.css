@@ -1,0 +1,34 @@
+.messaggeContainer{
+  
+  max-width: 75%;
+  width: fit-content;
+  display: flex;
+  padding: 0.5em;
+  gap: 0.7em;
+}
+
+.pictureContainer{
+  display: flex;
+  align-items:flex-start;
+}
+
+img{
+  border-radius: 50%;
+  width: 2em;
+}
+
+.nombreUsuario{
+  font-weight: 700;
+  color: #eee;
+}
+
+.textContainer{
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 300;
+  
+  background-color: #555;
+  border-radius: 10px;
+  box-shadow: #222 0 0 2px;
+  padding: 0.5em 1em 0.5em;
+}

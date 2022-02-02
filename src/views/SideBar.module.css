@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sidebar {
+  width: 25vw;
+  max-width: 25vw;
+  height: 100vh;
+  max-height: 100vh;
+  position: absolute;
+  left: 0px;
+  z-index: 1;
+  border-right: 1px solid #444;
+  background-color: #555;
+}
+
+
+/* Header del SideBar */
+.sidebar__header{
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__headerTitle{
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+
+
+.sidebar__channels{
+  height: 75vh;
+}
+
+.sidebar__channelAdd{
+  color: #aaa;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4em 0.6em 0.4em 0.8em;
+  margin-bottom: 0.7em;
+}
+
+.sidebar__channelAdd > div{
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__channelAdd i {
+  font-size: 20px;
+}
+
+.sidebar__channelAdd p {
+  font-weight: 700;
+}
+
+.sidebar__channelAdd:hover{
+  cursor: pointer;
+  color: #222;
+  background-color: #666;
+}
+
+.sidebar__botton{
+  width: inherit;
+  height: 4.1em;
+  padding: 1em;
+
+  position: fixed;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #666;
+}
+
+.sidebar__bottonUserInfo{
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.sidebar__userInfoAvatar{
+  width: 2.5em;
+  
+  padding-right: 0.5em;
+  border-right: 2px solid #999;
+  display: flex;
+}
+
+.sidebar__userInfoAvatar img{
+  width: 100%;
+  border-radius: 50%;
+}
+
+.userName{
+  color: #ddd;
+  font-size: 20px;
+}
+
+.sidebar__uid{
+  font-size: 14px;
+  font-style: italic;
+  color: #999;
+}
+
+.iconButtons{
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  justify-content: space-between;
+}
+
+.createChannel{
+  text-align: center;
+  background-color: #555;
+  height: 2em;
+  width: 2em;
+  color: #aaa;
+  padding: 0.3em;
+  border: 0;
+  border-radius: 5px;
+  transform: scale(1.1);
+}
+.createChannel:hover{
+  cursor: pointer;
+  color: rgb(204, 177, 89);
+  transform: scale(1);
+}
+
+.signOut{
+  text-align: center;
+  background-color: #555;
+  height: 2em;
+  width: 2em;
+  color: #aaa;
+  padding: 0.3em;
+  border: 0;
+  border-radius: 50%;
+  transform: scale(1.1);
+}
+.signOut:hover{
+  cursor: pointer;
+  color: rgb(204, 89, 89);
+  transform: scale(1);
+}

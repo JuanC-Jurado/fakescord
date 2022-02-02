@@ -1,0 +1,26 @@
+.canal{
+  padding: 0.05em 1em;
+  margin-bottom: 0.2em;
+  color: #aaa;
+  font-size: 18px;
+  display: flex;
+}
+
+.canal:hover{
+  cursor: pointer;
+  color: #fff;
+  text-decoration: underline;
+}
+
+p{
+  display: flex;
+  height: fit-content;
+  align-items: center;
+}
+
+.hash{
+  color: #eee;
+  font-size: 20px;
+  font-weight: 300;
+  margin-right: 0.2em;
+}

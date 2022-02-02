@@ -1,0 +1,90 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay{
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000077;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.modalCard{
+  padding: 1em;
+  margin-top: 10em;
+  height: fit-content;
+  min-width: 20em;
+
+  border-radius: 10px;
+  background-color: #555;
+  
+}
+
+.header{
+  border-bottom: 2px solid #666;
+  height: 2em;
+  width: 100%;
+  font-size: 18px;
+  margin-bottom: 0.5em;
+  color: #aaa;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+
+label{
+  display: block;
+  color: #999;
+}
+
+input{
+  display: block;
+  height: 20px;
+  width: 90%;
+  outline: none;
+  border: 0;
+  background-color: #666;
+  color: #bbb;
+  padding: 0.8em;
+  border-radius: 5px;
+  box-shadow: #333 0 0 5px;
+  font-size: 16px;
+  margin: 0.5em 0 1em;
+}
+
+.send{
+  float: right;
+  background-color: #aaa;
+  padding: 0.5em 1em;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: #444 0 0 5px;
+  color: #333;
+  font-weight: 700;
+}
+
+.send:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.close{
+  background-color: transparent;
+  color: #333;
+  align-self: flex-start;
+  border: 0;
+
+  font-size: 18px;
+}
+
+.close:hover{
+  transform: scale(1.5);
+  cursor: pointer;
+}
