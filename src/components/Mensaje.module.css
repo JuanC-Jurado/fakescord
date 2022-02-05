@@ -1,10 +1,20 @@
 .messaggeContainer{
-  
   max-width: 75%;
   width: fit-content;
   display: flex;
   padding: 0.5em;
   gap: 0.7em;
+}
+
+.messaggeContainerActual{
+  max-width: 75%;
+  width: fit-content;
+  display: flex;
+  padding: 0.5em;
+  gap: 0.7em;
+
+  align-self: flex-end;
+  flex-direction: row-reverse;
 }
 
 .pictureContainer{
@@ -18,17 +28,35 @@ img{
 }
 
 .nombreUsuario{
-  font-weight: 700;
-  color: #eee;
-}
-
-.textContainer{
   color: #ccc;
+  font-weight: 600;
+  text-decoration: do;
+}
+.textContainer{
   font-size: 14px;
   font-weight: 300;
+  border: #eee 2px solid;
+  
+  background-color: #666;
+  border-radius: 10px;
+  padding: 0.5em 1em 0.5em;
+}
+
+.nombreUsuarioActual{
+  font-weight: 500;
+  color: #ee9b00;
+}
+
+.textContainerActual{
+  font-size: 14px;
+  font-weight: 300;
+  border: #ee9b00 2px solid;
   
   background-color: #555;
   border-radius: 10px;
-  box-shadow: #222 0 0 2px;
   padding: 0.5em 1em 0.5em;
+}
+
+.mensaje {
+  color: #ccc
 }

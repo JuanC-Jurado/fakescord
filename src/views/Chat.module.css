@@ -8,67 +8,20 @@
   position: absolute;
   right: 0px;
   height: 100vh;
-  width: 75vw;
-  z-index: 0;
-}
-
-.chat__header{
-  position: relative;
-  height: 10vh;
-  background-color: #555;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1em 2em;
-  box-shadow: #222 0 0 5px;
+  width: 70vw;
   z-index: 1;
 }
 
-.chat__header p {
-  color: #aaa;
-  font-style: italic;
-}
 
-.chat__headerName{
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 300;
-  color: #aaa;
-}
-
-.channelInfoContainer{
-  width: 20%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-weight: 300;
-}
-
-.getOutButton{
-  border: 0;
-  background-color: transparent;
-  font-size: 32px;
-  color: #333;
-}
-
-.getOutButton:hover{
-  transform: scale(1.1);
-  cursor: pointer;
-  color: rgb(204, 89, 89);
-}
-
-.channelHash{
-  font-size: 24px;
-  font-weight: 400;
-  margin-right: 0.1em;
-}
 
 .chat__mesagges{
-  height: 85vh;
-  padding: 0.5em 1em;
+  height: 90vh;
+  padding: 12vh 1em 3vh 1em;
 
-  background-color: #444;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #aaa;
   z-index: 1;
 
   overflow: scroll;
@@ -80,12 +33,14 @@
 
 .chat__input{
   height: min-content;
-  width: 75vw;
+  width: inherit;
   background-color: #555;
   box-shadow: #222 0 0 5px;
   position: fixed;
   bottom: 0px;
   right: 0px;
+
+  box-shadow: #00000055 0 0 50px 5px;
 }
 
 .chat__inputForm{
@@ -112,31 +67,33 @@
   height: 60%;
   outline: none;
   border: 0;
-  background-color: #666;
-  color: #bbb;
+  background-color: #777;
+  color: #fff;
   border-radius: 5px;
   box-shadow: #333 0 0 5px;
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: 300;
   margin: 0 auto;
 }
 
 .chatInput::placeholder{
-  font-weight: 400;
-  color: #888;
+  font-weight: 300;
+  color: #aaa;
 }
 
 .chat__sendButton{
-  border-radius: 50%;
+  border-radius: 10px;
   border: 0;
-  width: 3em;
+  width: 4em;
   height: 3em;
   font-size: 15px;
-  background-color: #aaa;
+  background-color: #ee9b00;
   color: #555;
+  transform: scale(1.15);
 }
 
 .chat__sendButton:hover{
-  transform: scale(1.1);
+  transform: scale(1);
   cursor: pointer;
 }
 
@@ -174,7 +131,7 @@
  }
 
  .chat__mesagges{
-   height: 85vh;
+   height: 86vh;
    width: inherit;
  }
 

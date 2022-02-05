@@ -6,7 +6,23 @@ import firebaseApp from '../credenciales';
 
 const db = getFirestore(firebaseApp);
 
-function Modal({ usuario, setMostrarModal, obtenerListaCanales }) {
+function ModalUnirse({ usuario, setMostrarModal, obtenerListaCanales, setCanalActivo }) {
+
+  async function enviarNotificacionIn(canal){
+    const nuevaNotificacionIn = {
+      id: +new Date(),
+      usuario: usuario.displayName,
+      foto: usuario.photoURL,
+      tipo: 'notificacionIn'
+    };
+
+    const docuRef = doc(db, `canales/${canal}`);
+    await updateDoc(docuRef, {
+      mensajes: arrayUnion(nuevaNotificacionIn),
+    });
+
+    setCanalActivo(null)
+  }
 
   async function unirseCanal(e){
     e.preventDefault()
@@ -17,22 +33,27 @@ function Modal({ usuario, setMostrarModal, obtenerListaCanales }) {
     const snapshot = await getDoc(docuRef);
 
     if(snapshot.exists()){
+      const id = snapshot.data().id
+
       const datosCanal = {
         id: snapshot.data().id,
         nombre: snapshot.data().nombre
       }
 
       const canalesUsuarioRef = doc(db, `usuarios/${usuario.uid}`);
-
+      
       await updateDoc(canalesUsuarioRef, {
         canales: arrayUnion(datosCanal)
       })
 
       setMostrarModal(false)
-      obtenerListaCanales(usuario.uid)
+      await obtenerListaCanales(usuario.uid)
+
+      await enviarNotificacionIn(id)
+
     } else {
       // QUE HACER CUANDO EL CANAL NO EXISTE: ...
-      console.log(snapshot.exists())
+      console.log('no existe')
     }
   }
 
@@ -57,4 +78,4 @@ function Modal({ usuario, setMostrarModal, obtenerListaCanales }) {
   )
 }
 
-export default Modal
+export default ModalUnirse

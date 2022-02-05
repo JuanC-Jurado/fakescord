@@ -1,27 +1,7 @@
-import { deleteDoc, doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
 import React from 'react';
-import firebaseApp from '../credenciales';
 import styles from './ModalAbandonar.module.css'
 
-const db = getFirestore(firebaseApp);
-
-function ModalAbandonar({ setMostrarModal, canalActivo, usuario, setCanalActivo }) {
-
-  async function abandonarCanal() {
-    const docuRef = doc(db, `usuarios/${usuario.uid}`);
-    const snapshot = await getDoc(docuRef);
-    
-    const nuevaListaCanales = snapshot.data().canales.filter((canal) => {
-      return canal.id !== canalActivo.id;
-    })
-    
-    updateDoc(docuRef, {
-      canales: nuevaListaCanales
-    })
-
-    setCanalActivo(null)
-    setMostrarModal(false)
-  }
+function ModalAbandonar({ setMostrarModal, canalActivo, abandonarCanal }) {
 
   return (
     <>

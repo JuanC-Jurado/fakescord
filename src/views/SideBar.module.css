@@ -8,14 +8,14 @@
 }
 
 .sidebar {
-  width: 25vw;
-  max-width: 25vw;
+  width: 30vw;
   height: 100vh;
   max-height: 100vh;
   position: absolute;
   left: 0px;
   z-index: 2;
-  border-right: 1px solid #444;
+
+  box-shadow: #333333 0 0 10px 5px;
 }
 
 .mobileButton{
@@ -26,65 +26,93 @@
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 3;
 }
 
+.mobileButton i {
+  border-radius: 50%;
+  box-shadow: #222 0 0 5px 1px;
+  color: #ee9b00;
+}
 
 /* Header del SideBar */
 .sidebar__header{
-  background-color: #666;
+  background-color: #555;
   width: inherit;
-  height: 10vh;
+  height: 15vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .sidebar__headerTitle{
-  width: 100%;
   text-align: center;
-  font-size: 24px;
-  font-weight: 400;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
+.sidebar__headerTitle img {
+  border-radius: 0;
+  width: 60%;
+}
 
 .sidebar__channels{
-  height: 85vh;
+  height: 75vh;
   width: inherit;
   background-color: #555;
+  background: #ee9b00;
 }
 
-.sidebar__channelAdd{
+.sidebar__channelInteractions{
   color: #aaa;
   display: flex;
   justify-content: space-between;
-  padding: 0.4em 0.6em 0.4em 0.8em;
-  margin-bottom: 0.7em;
+  padding: 0.8em 1em 0.8em 0.8em;
+  background: #555;
 }
 
-.sidebar__channelAdd > div{
+.sidebar__channelInteractions > div{
   display: flex;
   align-items: center;
 }
 
-.sidebar__channelAdd i {
+.sidebar__channelInteractions i {
   font-size: 20px;
 }
 
-.sidebar__channelAdd p {
+.sidebar__channelInteractions p {
   font-weight: 700;
 }
 
-.sidebar__channelAdd:hover{
+.sidebar__channelInteractions:hover{
   cursor: pointer;
-  color: #222;
-  background-color: #666;
+  color: #ee9b00;
+  background-color: #4a4a4a;
 }
+
+
+
+.appInfoButton{
+  transform: scale(1.1);
+  text-align: center;
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  height: 2em;
+  width: 2em;
+}
+
+.appInfoButton i{
+  color: #333;
+}
+
+
 
 .sidebar__botton{
   width: inherit;
   height: 4.1em;
-  padding: 1em;
 
   position: fixed;
   bottom: 0;
@@ -93,7 +121,9 @@
   align-items: center;
   justify-content: space-between;
 
-  background-color: #666;
+  padding: 1em;
+
+  background-color: #555;
 }
 
 .sidebar__bottonUserInfo{
@@ -106,7 +136,7 @@
   width: 2.5em;
   
   padding-right: 0.5em;
-  border-right: 2px solid #999;
+  border-right: 2px solid #ee9b00;
   display: flex;
 }
 
@@ -129,21 +159,11 @@
 .iconButtons{
   display: flex;
   flex-direction: row;
-  width: 30%;
+  width: max-content;
   justify-content: space-between;
 }
 
-.createChannel{
-  text-align: center;
-  background-color: #555;
-  height: 2em;
-  width: 2em;
-  color: #aaa;
-  padding: 0.3em;
-  border: 0;
-  border-radius: 5px;
-  transform: scale(1.1);
-}
+
 .createChannel:hover{
   cursor: pointer;
   color: rgb(204, 177, 89);
@@ -159,12 +179,13 @@
   padding: 0.3em;
   border: 0;
   border-radius: 50%;
-  transform: scale(1.1);
+  transform: scale(1.5);
+  color: rgb(204, 89, 89);
 }
 .signOut:hover{
   cursor: pointer;
-  color: rgb(204, 89, 89);
-  transform: scale(1);
+  color: #222;
+  transform: scale(1.3);
 }
 
 @media (max-width: 768px){
@@ -172,8 +193,7 @@
     width: 35vw;
   }
 
-
-
+  
   .sidebar__botton{
     height: 6em;
   }
@@ -186,8 +206,12 @@
     width: 75vw;
     position: fixed;
     left: -100%;
+    
+    box-shadow: none;
+  }
 
-    box-shadow: #000 0 0 3px 2px;
+  .sidebarOverlay{
+    background-color: #0000004A;
   }
 
   .sidebar__channels{
@@ -198,10 +222,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: rotate(-90deg) scale(1.5);
+    transform: rotate(-360deg) scale(1.7);
     color: #999;
-  }
-
-  .mobileButton:hover{
   }
  }

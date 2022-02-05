@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.outNotification__card{
+  max-width: max-content;
+  min-width: 20em;
+  margin: 0.5em auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 50px;
+  background-color: #995555;
+  padding-right: 1em;
+}
+
+.outNotification__card > p {
+  
+  color: #fff;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.outNotification__card span{
+  font-weight: 400;
+  margin-right: 0.3em;
+}
+
+.card__photoContainer{
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  width: 2.5em;
+  margin-right: 1em;
+}
+
+.card__photoContainer img{
+  width: 100%;
+}
+
+@media (max-width: 425px){
+  .outNotification__card{
+    transform: scale(0.8);
+  }
+}

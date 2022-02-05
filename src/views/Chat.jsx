@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AES } from "crypto-js";
 
 import styles from "./Chat.module.css";
 import Mensaje from "../components/Mensaje";
 import ModalAbandonar from "../components/ModalAbandonar";
+import ChatHeader from "../components/ChatHeader";
 
 import {
   arrayUnion,
@@ -14,12 +15,16 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import firebaseApp from "../credenciales";
+import OutNotification from "../components/OutNotification";
+import InNotification from "../components/InNotification";
 
 const db = getFirestore(firebaseApp);
 
 function Chat({ usuario, canalActivo, setCanalActivo }) {
   const [mensajes, setMensajes] = useState(null);
   const [mostrarModalAbandonar, setMostrarModalAbandonar] = useState(false);
+
+  const bottom = useRef();
 
   if (canalActivo) {
     onSnapshot(doc(db, `canales/${canalActivo.id}`), (doc) => {
@@ -29,32 +34,44 @@ function Chat({ usuario, canalActivo, setCanalActivo }) {
         }
       }
     });
+  } else {
+    if (mensajes){
+      setMensajes(null)
+    }
   }
 
   useEffect(() => {
-    if (canalActivo) obtenerMensajes(canalActivo.id);
+    if (canalActivo) {
+      obtenerMensajes(canalActivo.id);
+    }
   }, [canalActivo]); //eslint-disable-line
+
 
   async function obtenerMensajes(canal) {
     if (canalActivo) {
       const docuRef = await getDoc(doc(db, `canales/${canal}`));
-      setMensajes(docuRef.data().mensajes);
+      await setMensajes(docuRef.data().mensajes);
+      bottom.current.scrollIntoView({ behavior: "auto" });
+
     }
   }
+
 
   async function enviarMensaje(e) {
     e.preventDefault();
 
-    if(e.target.elements.contenidoMensaje.value === '') return
+    if (e.target.elements.contenidoMensaje.value === "") return;
 
     const nuevoMensaje = {
       id: +new Date(),
       usuario: usuario.displayName,
-      foto: usuario.photoURL,
       mensaje: AES.encrypt(
         e.target.elements.contenidoMensaje.value,
         "@fakeKey"
       ).toString(),
+      tipo: "texto",
+      foto: usuario.photoURL,
+      uid: usuario.uid
     };
 
     const docuRef = doc(db, `canales/${canalActivo.id}`);
@@ -66,32 +83,65 @@ function Chat({ usuario, canalActivo, setCanalActivo }) {
     obtenerMensajes(canalActivo.id);
   }
 
+  async function abandonarCanal() {
+    const docuRef = doc(db, `usuarios/${usuario.uid}`);
+    const snapshot = await getDoc(docuRef);
+
+    const nuevaListaCanales = snapshot.data().canales.filter((canal) => {
+      return canal.id !== canalActivo.id;
+    });
+
+    updateDoc(docuRef, {
+      canales: nuevaListaCanales,
+    });
+
+    setCanalActivo(null);
+    setMostrarModalAbandonar(false);
+
+    enviarNotificacionOut();
+  }
+
+  async function enviarNotificacionOut() {
+    const nuevaNotificacionOut = {
+      id: +new Date(),
+      usuario: usuario.displayName,
+      tipo: "notificacionOut",
+      foto: usuario.photoURL,
+    };
+
+    const docuRef = doc(db, `canales/${canalActivo.id}`);
+    await updateDoc(docuRef, {
+      mensajes: arrayUnion(nuevaNotificacionOut),
+    });
+
+    setMensajes(null);
+    setCanalActivo(null);
+  }
+
   return (
     <div className={styles.chat}>
-      <div className={styles.chat__header}>
-        {/* Nombre del Canal */}
-        <div className={styles.headerInnerContainer}>
-          <h2 className={styles.chat__headerName}>
-            <span className={styles.channelHash}>#</span>
-            {canalActivo ? canalActivo.nombre : null}
-          </h2>
-        </div>
-        {canalActivo ? (
-          <div className={styles.channelInfoContainer}>
-            <p className={styles.idChannel}>{`ID: ${canalActivo.id}`}</p>
-            <div>
-              <button onClick={() => setMostrarModalAbandonar(true)} className={styles.getOutButton} title="Abandonar Canal"><i className="fas fa-sign-out-alt"></i></button>
-            </div>
-          </div>
-        ) : null}
-      </div>
+      <ChatHeader
+        setMostrarModalAbandonar={setMostrarModalAbandonar}
+        canalActivo={canalActivo}
+      />
 
       <div className={styles.chat__mesagges}>
         {mensajes
           ? mensajes.map((mensaje) => {
-              return <Mensaje key={mensaje.id} messaggeData={mensaje} />;
+              if (mensaje.tipo === "notificacionOut") {
+                return (
+                  <OutNotification key={mensaje.id} messaggeData={mensaje} />
+                );
+              } else if (mensaje.tipo === "notificacionIn") {
+                return (
+                  <InNotification key={mensaje.id} messaggeData={mensaje} />
+                );
+              } else {
+                return <Mensaje key={mensaje.id} messaggeData={mensaje} usuario={usuario} />;
+              }
             })
           : null}
+        <div ref={bottom}></div>
       </div>
 
       <div className={styles.chat__input}>
@@ -122,16 +172,13 @@ function Chat({ usuario, canalActivo, setCanalActivo }) {
         </form>
       </div>
 
-      {
-        mostrarModalAbandonar && canalActivo ? 
+      {mostrarModalAbandonar && canalActivo ? (
         <ModalAbandonar
+          abandonarCanal={abandonarCanal}
           setMostrarModal={setMostrarModalAbandonar}
           canalActivo={canalActivo}
-          usuario={usuario}
-          setCanalActivo={setCanalActivo}
-        /> :
-        null
-      }
+        />
+      ) : null}
     </div>
   );
 }

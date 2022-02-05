@@ -7,17 +7,20 @@
 .overlay{
   width: 100vw;
   height: 100vh;
-  background-color: #00000077;
+  background-color: #000000aa;
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
+  z-index: 4;
+
+  backdrop-filter: blur(2px);
 }
 
 .modalCard{
   padding: 1em;
-  margin-top: 10em;
+  margin-top: 7em;
   height: fit-content;
   min-width: 20em;
 
