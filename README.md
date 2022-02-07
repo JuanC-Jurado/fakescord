@@ -1,6 +1,6 @@
-# *Repositorio de Fakescord 💬*
+# Repositorio de Fakescord 💬
 
-##Descripción 📃
+## Descripción 📃
 Esta aplicación web emula el funcionamiento de una aplicación de chat por canales, similar a discord, a la cual se el atribuye la creación del nombre:
 ***fakescord: (fake + discord)***
 
@@ -21,4 +21,4 @@ $ npm start
 ```
 
 ## Autor ✏️
-** <a href="https://github.com/JuanC-Jurado">Juan Jurado</a> **
+<a href="https://github.com/JuanC-Jurado">Juan Jurado</a> 
