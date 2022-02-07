@@ -61,8 +61,7 @@
 .sidebar__channels{
   height: 75vh;
   width: inherit;
-  background-color: #555;
-  background: #ee9b00;
+  background: #444;
 }
 
 .sidebar__channelInteractions{
@@ -71,6 +70,10 @@
   justify-content: space-between;
   padding: 0.8em 1em 0.8em 0.8em;
   background: #555;
+}
+
+.interactions{
+  border-bottom: #ee9b00 2px solid;
 }
 
 .sidebar__channelInteractions > div{
@@ -91,8 +94,6 @@
   color: #ee9b00;
   background-color: #4a4a4a;
 }
-
-
 
 .appInfoButton{
   transform: scale(1.1);

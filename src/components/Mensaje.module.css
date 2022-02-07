@@ -24,7 +24,7 @@
 
 img{
   border-radius: 50%;
-  width: 2em;
+  width: 1.5em;
 }
 
 .nombreUsuario{
@@ -35,26 +35,23 @@ img{
 .textContainer{
   font-size: 14px;
   font-weight: 300;
-  border: #eee 2px solid;
   
-  background-color: #666;
+  background-color: #00000027;
   border-radius: 10px;
   padding: 0.5em 1em 0.5em;
-}
 
-.nombreUsuarioActual{
-  font-weight: 500;
-  color: #ee9b00;
+  box-shadow: #272727 3px 3px;
 }
 
 .textContainerActual{
   font-size: 14px;
   font-weight: 300;
-  border: #ee9b00 2px solid;
   
-  background-color: #555;
+  background-color: #ffffff17;
   border-radius: 10px;
   padding: 0.5em 1em 0.5em;
+
+  box-shadow: #272727 3px 3px;
 }
 
 .mensaje {

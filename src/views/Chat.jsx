@@ -35,8 +35,8 @@ function Chat({ usuario, canalActivo, setCanalActivo }) {
       }
     });
   } else {
-    if (mensajes){
-      setMensajes(null)
+    if (mensajes) {
+      setMensajes(null);
     }
   }
 
@@ -46,16 +46,13 @@ function Chat({ usuario, canalActivo, setCanalActivo }) {
     }
   }, [canalActivo]); //eslint-disable-line
 
-
   async function obtenerMensajes(canal) {
     if (canalActivo) {
       const docuRef = await getDoc(doc(db, `canales/${canal}`));
       await setMensajes(docuRef.data().mensajes);
       bottom.current.scrollIntoView({ behavior: "auto" });
-
     }
   }
-
 
   async function enviarMensaje(e) {
     e.preventDefault();
@@ -71,7 +68,7 @@ function Chat({ usuario, canalActivo, setCanalActivo }) {
       ).toString(),
       tipo: "texto",
       foto: usuario.photoURL,
-      uid: usuario.uid
+      uid: usuario.uid,
     };
 
     const docuRef = doc(db, `canales/${canalActivo.id}`);
@@ -125,24 +122,36 @@ function Chat({ usuario, canalActivo, setCanalActivo }) {
         canalActivo={canalActivo}
       />
 
-      <div className={styles.chat__mesagges}>
-        {mensajes
-          ? mensajes.map((mensaje) => {
-              if (mensaje.tipo === "notificacionOut") {
-                return (
-                  <OutNotification key={mensaje.id} messaggeData={mensaje} />
-                );
-              } else if (mensaje.tipo === "notificacionIn") {
-                return (
-                  <InNotification key={mensaje.id} messaggeData={mensaje} />
-                );
-              } else {
-                return <Mensaje key={mensaje.id} messaggeData={mensaje} usuario={usuario} />;
-              }
-            })
-          : null}
-        <div ref={bottom}></div>
-      </div>
+      {canalActivo ? (
+        <div className={styles.chat__mesagges}>
+          {mensajes
+            ? mensajes.map((mensaje) => {
+                if (mensaje.tipo === "notificacionOut") {
+                  return (
+                    <OutNotification key={mensaje.id} messaggeData={mensaje} />
+                  );
+                } else if (mensaje.tipo === "notificacionIn") {
+                  return (
+                    <InNotification key={mensaje.id} messaggeData={mensaje} />
+                  );
+                } else {
+                  return (
+                    <Mensaje
+                      key={mensaje.id}
+                      messaggeData={mensaje}
+                      usuario={usuario}
+                    />
+                  );
+                }
+              })
+            : null}
+          <div ref={bottom}></div>
+        </div>
+      ) : (
+        <div className={styles.chat__noMesagges}>
+          <p>Crea <i className="fas fa-folder-plus"></i> o únete <i className="fas fa-search-plus"></i> a un canal </p>
+        </div>
+      )}
 
       <div className={styles.chat__input}>
         {/* Input para escribir y enviar mensajes */}

@@ -1,15 +1,16 @@
 .canal{
-  padding: 0.05em 1em;
+  padding: 0.3em 1em;
   margin-bottom: 0.2em;
   
-  color: #4a4a4a;
+  color: #ee9b00;
   font-size: 18px;
+  font-weight: 500;
   display: flex;
 }
 
 .canal:hover{
   cursor: pointer;
-  background: #c28004;
+  background: #c2800425;
 }
 
 p{
