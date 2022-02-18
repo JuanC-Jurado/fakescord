@@ -5,7 +5,7 @@ Esta aplicación web emula el funcionamiento de una aplicación de chat por cana
 ***fakescord: (fake + discord)***
 
 ## Pruébalo ▶️
-https://juanc-jurado.github.io/fakescord/
+https://fakescord-fd551.web.app/
 
 ## Tecnologías ⚙️
 * React (https://es.reactjs.org/): Versión 17.0.2
