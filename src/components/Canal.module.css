@@ -6,6 +6,8 @@
   font-size: 18px;
   font-weight: 500;
   display: flex;
+
+  overflow: hidden;
 }
 
 .canal:hover{
@@ -13,8 +15,7 @@
   background: #c2800425;
 }
 
-p{
-  display: flex;
+.canal p{
   height: fit-content;
   align-items: center;
 }

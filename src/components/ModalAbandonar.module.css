@@ -23,6 +23,7 @@
   margin-top: 10em;
   height: fit-content;
   min-width: 20em;
+  max-width: 30em;
 
   border-radius: 10px;
   background-color: #555;
@@ -31,6 +32,12 @@
 
 .modalCard p {
   color: #aaa;
+  overflow-wrap: break-word;
+}
+
+.modalCard span{
+  font-weight: 600;
+  color: #ee9b00;
 }
 
 .header{

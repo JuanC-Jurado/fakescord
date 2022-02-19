@@ -2,6 +2,44 @@
   box-sizing: border-box;
 }
 
+.logo{
+  width: 30vw;
+}
+
+.logo img{
+  width: 100%;
+  border-radius: 0;
+  display: block;
+}
+
+.slogan{
+  color: #ee9b00;
+  margin-top: 1em;
+  font-style: italic;
+  text-align: center;
+}
+
+.login__content{
+  width: 90vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.login__image{
+  width: 50%;
+}
+
+.login__image img {
+  width: 100%;
+}
+
+.login__side{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: space-around;
+}
+
 .container{
   background-color: #444;
   height: 100vh;
@@ -24,4 +62,29 @@
 .button:hover{
   cursor: pointer;
   background-color: #565656;
+  color: #ee9b00;
+}
+
+@media (max-width:760px){
+
+  .login__content{
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .login__side{
+    gap: 2em;
+    align-content: center;
+    
+  }
+  
+}
+
+
+@media (max-width: 425px){
+  .login__content{
+    flex-direction: column-reverse;
+  }
 }

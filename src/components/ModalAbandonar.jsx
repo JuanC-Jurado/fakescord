@@ -11,7 +11,7 @@ function ModalAbandonar({ setMostrarModal, canalActivo, abandonarCanal }) {
           <h4>Abandonar Canal</h4>
         </div>
         <div>
-          <p>{`¿Estas seguro que quieres abandonar el canal #${canalActivo.nombre}`}</p>
+          <p>¿Estas seguro que quieres abandonar el canal #<span>{canalActivo.nombre}</span>?</p>
           <div className={styles.buttonsContainer}>
             <button onClick={() => setMostrarModal(false)} className={styles.no}>No</button>
             <button onClick={abandonarCanal} className={styles.yes}>Si</button>

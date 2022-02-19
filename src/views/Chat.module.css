@@ -38,8 +38,9 @@
 }
 
 .chat__noMesagges p {
-  transform: scale(1.5);
+  font-size: 24px;
   font-weight: 800;
+  text-align: center;
 
   color: rgba(0, 0, 0, 0.4);
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);
@@ -148,6 +149,11 @@
 
   .chat__mesagges{
     width: 65vw;
+  }
+
+  .chat__noMesagges p{
+    width: 90vw;
+    overflow-wrap: break-word;
   }
 
   .chat__input{
